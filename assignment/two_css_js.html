@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lists</title>
+    <link rel="stylesheet" href="two.css">
+</head>
+<body>
+
+    <ol>
+        <li><b>Frontend Development</b>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+            </ul>
+        </li>
+        <li><b>Styling & Framework</b>
+            <ul>
+                <li>Bootstrap</li>
+                <li>Tailwind CSS</li>
+            </ul>
+        </li>
+        <li><b>Tools & Platform</b>
+            <ul>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>VS Code</li>
+            </ul>
+        </li>
+    </ol>
+
+    <hr>
+
+    <!-- Course Validation Section -->
+    <div style="text-align:center;">
+        <h3>Check Your Course</h3>
+        <input type="text" id="courseInput" placeholder="Enter course name">
+        <br><br>
+        <button onclick="validateCourse()">Validate</button>
+        <p id="result"></p>
+    </div>
+
+    <hr>
+
+    <div style="text-align:center;">
+        <a href="https://Parashuram-M.github.io/parashuram.github.i-sem4-fet/assignment/two.html">
+            🔗 Without CSS
+        </a>
+    </div>
+
+<script>
+function validateCourse() {
+    let course = document.getElementById("courseInput").value.toLowerCase();
+
+    // List of valid courses
+    let courses = [
+        "html5", "css3", "javascript",
+        "bootstrap", "tailwind css",
+        "git", "github", "vs code"
+    ];
+
+    let result = document.getElementById("result");
+
+    if(course === ""){
+        result.innerHTML = "⚠️ Please enter a course name!";
+        result.style.color = "orange";
+    }
+    else if(courses.includes(course)){
+        result.innerHTML = "✅ Course is available in the list!";
+        result.style.color = "green";
+    }
+    else{
+        result.innerHTML = "❌ Course not found!";
+        result.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
