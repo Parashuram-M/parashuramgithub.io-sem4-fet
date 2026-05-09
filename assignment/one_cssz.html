@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Feedback Form</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#dfe9f3,#ffffff);
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   BACKGROUND SHAPES
+========================= */
+
+/* Circle */
+.circle1{
+    position: fixed;
+    width: 220px;
+    height: 220px;
+    background: #28a745;
+    border-radius: 50%;
+    top: 20px;
+    left: 30px;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Rectangle */
+.rectangle{
+    position: fixed;
+    width: 260px;
+    height: 120px;
+    background: #007bff;
+    top: 100px;
+    right: 40px;
+    opacity: 0.25;
+    border-radius: 15px;
+    transform: rotate(-10deg);
+    z-index: 2;
+}
+
+/* Square */
+.square{
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    background: purple;
+    bottom: 70px;
+    left: 70px;
+    opacity: 0.25;
+    transform: rotate(25deg);
+    z-index: 0;
+}
+
+/* Triangle */
+.triangle{
+    position: fixed;
+    width: 0;
+    height: 0;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 160px solid orange;
+    top: 300px;
+    right: 250px;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+/* Diamond */
+.diamond{
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background: deeppink;
+    bottom: 100px;
+    right: 120px;
+    transform: rotate(45deg);
+    opacity: 0.3;
+    z-index: 2;
+}
+
+/* Transparent Bar */
+.bar{
+    position: fixed;
+    width: 450px;
+    height: 40px;
+    background: rgba(0,0,0,0.08);
+    top: 50%;
+    left: -80px;
+    transform: rotate(-15deg);
+    z-index: 0;
+}
+
+/* Small Squares */
+.small-square1{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: red;
+    top: 430px;
+    left: 260px;
+    opacity: 0.4;
+    z-index: 3;
+}
+
+.small-square2{
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    background: teal;
+    top: 220px;
+    left: 500px;
+    opacity: 0.3;
+    transform: rotate(15deg);
+    z-index: 2;
+}
+
+/* =========================
+   FORM CONTAINER
+========================= */
+
+#container{
+    width: 340px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* Decorative Layer */
+#container::before{
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(40,167,69,0.12);
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    z-index: 1;
+}
+
+/* Content Layer */
+.content{
+    position: relative;
+    z-index: 5;
+}
+
+/* Badge */
+.badge{
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background: crimson;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 20;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Inputs */
+input, select, button{
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    position: relative;
+    z-index: 6;
+}
+
+.inline{
+    width: auto;
+}
+
+/* Button */
+button{
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 7;
+}
+
+button:hover{
+    background: #218838;
+    transform: scale(1.05);
+}
+
+/* Error */
+#error{
+    color: red;
+    font-size: 14px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table{
+    width: 85%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: white;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+table, th, td{
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+th{
+    background: #28a745;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     SHAPES
+========================= -->
+
+<div class="circle1"></div>
+<div class="rectangle"></div>
+<div class="square"></div>
+<div class="triangle"></div>
+<div class="diamond"></div>
+<div class="bar"></div>
+<div class="small-square1"></div>
+<div class="small-square2"></div>
+
+<!-- =========================
+     FORM
+========================= -->
+
+<div id="container">
+
+    <div class="badge">NEW</div>
+
+    <div class="content">
+
+        <h2>Feedback Form</h2>
+
+        Name:
+        <input type="text" id="username">
+
+        Gender:
+        <input type="radio" name="gender" value="Male" class="inline"> Male
+        <input type="radio" name="gender" value="Female" class="inline"> Female
+
+        <br><br>
+
+        Rating:
+        <select id="rating">
+            <option value="">Select</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Poor</option>
+        </select>
+
+        Interests (Checkbox):
+        <input type="checkbox" name="interest" value="Design" class="inline"> Design
+        <input type="checkbox" name="interest" value="Coding" class="inline"> Coding
+        <input type="checkbox" name="interest" value="Content Creator" class="inline"> Content Creator
+
+        <br><br>
+
+        Features (List Box):
+        <select id="features" multiple>
+            <option>UI</option>
+            <option>Performance</option>
+            <option>Security</option>
+            <option>Support</option>
+        </select>
+
+        <button onclick="submitFeedback()">Submit</button>
+
+        <p id="error"></p>
+
+    </div>
+</div>
+
+<!-- =========================
+     TABLE
+========================= -->
+
+<table id="feedbackTable">
+
+<tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Rating</th>
+    <th>Interests</th>
+    <th>Features</th>
+</tr>
+
+</table>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function submitFeedback(){
+
+    let name = document.getElementById("username").value;
+    let rating = document.getElementById("rating").value;
+
+    let gender = "";
+    let radios = document.getElementsByName("gender");
+
+    for(let r of radios){
+        if(r.checked){
+            gender = r.value;
+        }
+    }
+
+    let interests = [];
+    let checks = document.getElementsByName("interest");
+
+    for(let c of checks){
+        if(c.checked){
+            interests.push(c.value);
+        }
+    }
+
+    let features = [];
+    let featureSelect = document.getElementById("features");
+
+    for(let opt of featureSelect.options){
+        if(opt.selected){
+            features.push(opt.value);
+        }
+    }
+
+    let error = document.getElementById("error");
+
+    if(name === "" || gender === "" || rating === ""){
+        error.innerHTML = "Please fill required fields!";
+        return;
+    }
+
+    error.innerHTML = "";
+
+    let table = document.getElementById("feedbackTable");
+    let row = table.insertRow();
+
+    row.insertCell(0).innerHTML = name;
+    row.insertCell(1).innerHTML = gender;
+    row.insertCell(2).innerHTML = rating;
+    row.insertCell(3).innerHTML = interests.join(", ");
+    row.insertCell(4).innerHTML = features.join(", ");
+
+    /* RESET FORM */
+
+    document.getElementById("username").value = "";
+    document.getElementById("rating").value = "";
+
+    for(let r of radios){
+        r.checked = false;
+    }
+
+    for(let c of checks){
+        c.checked = false;
+    }
+
+    for(let opt of featureSelect.options){
+        opt.selected = false;
+    }
+}
+
+</script>
+
+</body>
+</html>
